@@ -10,7 +10,6 @@ import java.util.*;
  */
 public class Blockchain
 {
-
     public static void main(String[] args){
         Scanner s = new Scanner(System.in);
         StringTokenizer st;
@@ -21,12 +20,15 @@ public class Blockchain
         ArrayList<String> al_previousHash = new ArrayList<String>();
         int count = 0,i = 0;
 
+        // ↓ Genesis block는 수동으로 만들기.
         Block b = new Block("0","01/01/2017","Genesis block");
         al_index.add("0");
         al_timestamp.add("01/01/2017");
         al_data.add("Genesis block");
         al_hash.add(b.hash() + "0");
         al_previousHash.add("0");
+
+        // ↓ 2번째 이후의 정보를 삽입하기.
         while(true){
             System.out.print("입력하시겠습니까?(y/n)");
             String ansar = s.next();
@@ -48,6 +50,8 @@ public class Blockchain
                 break;
             }
         }
+
+        // ↓ 입력된 정보를 보기.
         while(true){
             System.out.print("전체를 보시겠습니까?(y/n)");
             String ansar = s.next();
@@ -66,7 +70,7 @@ public class Blockchain
                     System.out.println(al_hash.get(i));
                 }
                 if(i <= count){
-                    break;
+                    System.exit(0);
                 }
             }else if(ansar.equals("n") || ansar.equals("N")){
                 System.exit(0);

@@ -19,14 +19,7 @@ public class Block
         this.data = data;
         this.previousHash = previousHash;
     }
-    
-    public String calculateHash(){
-        return (this.index +" "+ this.timestamp +" "+
-               this.data +" "+ this.previousHash).toString();
-    }
-    
     public String hash(){
-        return (this.index + this.timestamp +
-                this.data + this.previousHash);
+        return this.index + this.timestamp + this.data + this.previousHash;
     }
 }
