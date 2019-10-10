@@ -17,14 +17,36 @@ public class p5
         String file_2 = s.nextLine();
         System.out.println(file_1 +"와 "+ file_2 +"를 비교합니다.");
         try{
-            FileInputStream fis = new FileInputStream(file_1);
-            FileOutputStream fos = new FileOutputStream(file_2);
-            while(fis.read() != -1){
-                fis.read();
+            FileInputStream fis = new FileInputStream("d:\\javabook\\elvist1.txt");
+            InputStreamReader in = new InputStreamReader(fis,"UNICODE");
+            FileInputStream fis_copy = new FileInputStream("d:\\javabook\\elvist1-복사본.txt");
+            InputStreamReader in_copy = new InputStreamReader(fis_copy,"UNICODE");
+            int ori,cop;
+            while(true){
+                ori = in.read();
+                cop = in_copy.read();
+                if(ori==cop){
+                    continue;
+                }else if(ori !=cop){
+                    System.out.println("파일이 서로 다릅니다.");
+                    break;
+                }
+                if(in.read() != -1 && in_copy.read() != -1){
+                    if(ori==cop){
+                        System.out.println("파일이 같습니다.");
+                        break;
+                    }else{
+                        System.out.println("파일이 서로 다릅니다.");
+                        break;
+                    }
+                }
+                fis.close();
+                in.close();
+                fis_copy.close();
+                in_copy.close();
             }
-            System.out.println(fis.read());
         }catch(IOException e){
-            
+            System.out.println("error");
         }
     }
 }

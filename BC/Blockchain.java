@@ -1,7 +1,5 @@
 package BC;
-
 import java.util.*;
-
 /**
  * Write a description of class Blockchain here.
  *
@@ -12,7 +10,6 @@ public class Blockchain
 {
     public static void main(String[] args){
         Scanner s = new Scanner(System.in);
-        StringTokenizer st;
         ArrayList<String> al_hash = new ArrayList<String>();
         ArrayList<String> al_index = new ArrayList<String>();
         ArrayList<String> al_timestamp = new ArrayList<String>();
@@ -20,7 +17,7 @@ public class Blockchain
         ArrayList<String> al_previousHash = new ArrayList<String>();
         int count = 0,i = 0;
 
-        // ↓ Genesis block는 수동으로 만들기.
+        // ↓ Genesis block초기화
         Block b = new Block("0","01/01/2017","Genesis block");
         al_index.add("0");
         al_timestamp.add("01/01/2017");
@@ -69,9 +66,7 @@ public class Blockchain
                     System.out.print("hash:");
                     System.out.println(al_hash.get(i));
                 }
-                if(i <= count){
-                    System.exit(0);
-                }
+                System.exit(0);
             }else if(ansar.equals("n") || ansar.equals("N")){
                 System.exit(0);
             }
